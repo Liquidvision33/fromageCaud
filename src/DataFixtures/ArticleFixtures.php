@@ -8,8 +8,9 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Faker;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class ArticleFixtures extends Fixture
+class ArticleFixtures extends Fixture implements OrderedFixtureInterface
 {
     public const ARTICLES = [
         [
@@ -110,19 +111,19 @@ class ArticleFixtures extends Fixture
             $article->setSlug($this->slugger->slug($article->getName())->lower());
             $article->setStock($faker->numberBetween(1, 20));
             $article->setPrice($faker->numberBetween(1500, 9500));
-            $article->setCategory(
-                $this->getReference('category_' . $value['category'])
-            );
+
+            $category = $this->getReference('category_' . $value['category']);
+            $article->setCategory($category);
+
             $manager->persist($article);
         }
 
         $manager->flush();
     }
 
-    public function getDependencies(): array
+    public function getOrder()
     {
-        return [
-            CategoryFixtures::class,
-        ];
+        return 2;
     }
 }
+
