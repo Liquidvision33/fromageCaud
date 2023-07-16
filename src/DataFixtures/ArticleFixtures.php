@@ -14,24 +14,24 @@ class ArticleFixtures extends Fixture implements OrderedFixtureInterface
 {
     public const ARTICLES = [
         [
-            'articleName' => 'Pièce montée fromage 10 pers',
+            'articleName' => 'Pièce montée fromages 10 pers',
             'articlePicture' => 'traiteur1.jpg',
-            'category' => 'Traiteur'
+            'category' => 'Plateau de fromages'
         ],
         [
-            'articleName' => 'Plateau de fromage 4 pers',
+            'articleName' => 'Plateau de fromages 4 pers',
             'articlePicture' => 'Traiteur3.jpg',
-            'category' => 'Traiteur'
+            'category' => 'Plateau de fromages'
         ],
         [
-            'articleName' => 'Plateau de charcuterie 8/10 pers',
+            'articleName' => 'Plateau de charcuteries 8/10 pers',
             'articlePicture' => 'Traiteur5.jpg',
-            'category' => 'Traiteur'
+            'category' => 'Plateau de charcuteries'
         ],
         [
             'articleName' => 'Tarte aux fromages et poires 8 pers',
             'articlePicture' => 'Traiteur2.jpg',
-            'category' => 'Traiteur'
+            'category' => 'Les cuisinés'
         ],
         [
             'articleName' => 'Bleu de causse',
@@ -56,42 +56,52 @@ class ArticleFixtures extends Fixture implements OrderedFixtureInterface
         [
             'articleName' => 'Montagne Blanc',
             'articlePicture' => 'Vin1.jpg',
-            'category' => 'Vin'
+            'category' => 'Vin blanc'
         ],
         [
             'articleName' => 'Bandol',
             'articlePicture' => 'Vin2.jpg',
-            'category' => 'Vin'
+            'category' => 'Vin rosé'
         ],
         [
             'articleName' => 'Coffret dégustation',
             'articlePicture' => 'Vin3.jpg',
-            'category' => 'Vin'
+            'category' => 'Coffret'
         ],
         [
             'articleName' => 'Cotes de Blaye',
             'articlePicture' => 'Vin5.jpg',
-            'category' => 'Vin'
+            'category' => 'Vin rouge'
         ],
         [
             'articleName' => 'Croutons',
             'articlePicture' => 'crouton.jpg',
-            'category' => 'Epicerie'
+            'category' => 'Le salé'
         ],
         [
             'articleName' => 'Piment',
             'articlePicture' => 'piment.jpg',
-            'category' => 'Epicerie'
+            'category' => 'Condiment'
         ],
         [
             'articleName' => 'Yaourt',
             'articlePicture' => 'Epicerie2.jpg',
-            'category' => 'Epicerie'
+            'category' => 'Yaourt'
         ],
         [
-            'articleName' => 'Biscuits salés',
+            'articleName' => 'Biscuits sucré',
             'articlePicture' => 'biscuits.jpg',
-            'category' => 'Epicerie'
+            'category' => 'Le sucré'
+        ],
+        [
+            'articleName' => 'Beurre d\'isigny',
+            'articlePicture' => 'beurre.jpg',
+            'category' => 'Beurre'
+        ],
+        [
+            'articleName' => 'Créme fraiche AOP',
+            'articlePicture' => 'creme.jpg',
+            'category' => 'Crème fraiche'
         ],
     ];
 

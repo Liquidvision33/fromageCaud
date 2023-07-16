@@ -24,9 +24,6 @@ class Category implements TimestampableInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
 
-    #[ORM\Column(type: 'integer')]
-    private $categoryOrder;
-
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class)]
     private Collection $articles;
 
@@ -36,6 +33,9 @@ class Category implements TimestampableInterface
 
     #[ORM\OneToOne(mappedBy: 'parent',targetEntity: self::class)]
     private $category;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $categoryOrder = null;
 
     public function __construct()
     {
@@ -55,24 +55,6 @@ class Category implements TimestampableInterface
     public function setName(?string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategoryOrder(): ?int
-    {
-        return $this->categoryOrder;
-    }
-
-    /**
-     * @param mixed $category
-     */
-    public function setCategoryOrder(int $categoryOrder): self
-    {
-        $this->category = $categoryOrder;
 
         return $this;
     }
@@ -107,7 +89,7 @@ class Category implements TimestampableInterface
         return $this;
     }
 
-    public function getParent(): ?string
+    public function getParent(): ?Category
     {
         return $this->parent;
     }
@@ -115,6 +97,18 @@ class Category implements TimestampableInterface
     public function setParent(?Category $parent): Category
     {
         $this->parent = $parent;
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->categoryOrder;
+    }
+
+    public function setCategoryOrder(?int $categoryOrder): static
+    {
+        $this->categoryOrder = $categoryOrder;
 
         return $this;
     }
