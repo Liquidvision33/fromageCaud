@@ -24,6 +24,9 @@ class Category implements TimestampableInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
 
+    #[ORM\Column(type: 'integer')]
+    private $categoryOrder;
+
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class)]
     private Collection $articles;
 
@@ -52,6 +55,24 @@ class Category implements TimestampableInterface
     public function setName(?string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryOrder(): ?int
+    {
+        return $this->categoryOrder;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategoryOrder(int $categoryOrder): self
+    {
+        $this->category = $categoryOrder;
 
         return $this;
     }
