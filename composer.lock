@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54e67b95c16a2151d7a7f4e9e69da30d",
+    "content-hash": "ccc67c1f60cb45b974275a8e8fb96f2b",
     "packages": [
         {
             "name": "andanteproject/timestampable-bundle",
