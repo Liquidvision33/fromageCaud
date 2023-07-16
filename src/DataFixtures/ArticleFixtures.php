@@ -106,7 +106,7 @@ class ArticleFixtures extends Fixture implements OrderedFixtureInterface
         foreach (self::ARTICLES as $value) {
             $article = new Article();
             $article->setName($value['articleName']);
-            $article->setDescription($faker->text(10));
+            $article->setDescription($faker->text(100));
             $article->setArticlePicture($value['articlePicture']);
             $article->setSlug($this->slugger->slug($article->getName())->lower());
             $article->setStock($faker->numberBetween(1, 20));
