@@ -1,0 +1,14 @@
+@import "navbar.css";
+@import "carousel.css";
+@import "footer.css";
+@import "testimonial.css";
+@import "resetPassword.css";
+@import "register.css";
+
+:root {
+    --primary: #5B8C51;
+    --secondary: #EDDD5E;
+    --light: #F7F7F7;
+    --dark: #404A3D;
+}
+
