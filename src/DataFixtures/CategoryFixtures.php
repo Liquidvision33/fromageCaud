@@ -14,23 +14,43 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $parent = $this->createCategory('Fromage', null, $manager);
+        $parent = $this->createCategory('Crémerie', null, $manager);
 
-        $this->createCategory('Traiteur', $parent, $manager);
-        $this->createCategory('Vin', $parent, $manager);
-        $this->createCategory('Epicerie', $parent, $manager);
+        $this->createCategory('Fromage', $parent, $manager);
+        $this->createCategory('Beurre', $parent, $manager);
+        $this->createCategory('Yaourt', $parent, $manager);
+        $this->createCategory('Crème fraiche', $parent, $manager);
+
+        $parent = $this->createCategory('Traiteur', null, $manager);
+
+        $this->createCategory('Plateau de charcuteries', $parent, $manager);
+        $this->createCategory('Plateau de fromages', $parent, $manager);
+        $this->createCategory('Les cuisinés', $parent, $manager);
+
+        $parent = $this->createCategory('Cave', null, $manager);
+
+        $this->createCategory('Vin blanc', $parent, $manager);
+        $this->createCategory('Vin rouge', $parent, $manager);
+        $this->createCategory('Vin rosé', $parent, $manager);
+        $this->createCategory('Coffret', $parent, $manager);
+
+        $parent = $this->createCategory('Epicerie', null, $manager);
+
+        $this->createCategory('Le sucré', $parent, $manager);
+        $this->createCategory('Le salé', $parent, $manager);
+        $this->createCategory('Condiment', $parent, $manager);
 
         $manager->flush();
     }
 
-    public function createCategory(string $categoryName, Category $parent = null, ObjectManager $manager)
+    public function createCategory(string $name, Category $parent = null, ObjectManager $manager)
     {
         $category = new Category();
-        $category->setName($categoryName);
+        $category->setName($name);
         $category->setSlug($this->slugger->slug($category->getName())->lower());
         $category->setParent($parent);
         $manager->persist($category);
-        $this->addReference('category_' . $categoryName, $category);
+        $this->addReference('category_' . $name, $category);
 
         return $category;
     }
