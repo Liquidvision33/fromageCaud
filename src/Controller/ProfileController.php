@@ -6,21 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/profil', name: 'app_profil')]
-class ProfilController extends AbstractController
+class ProfileController extends AbstractController
 {
-    #[Route('/', name: 'index')]
+    #[Route('/profile', name: 'app_profile')]
     public function index(): Response
     {
-        return $this->render('profil/index.html.twig', [
-            'controller_name' => 'Profil de l\'utilisateur',
+        return $this->render('profile/index.html.twig', [
+            'controller_name' => 'ProfileController',
         ]);
     }
 
     #[Route('/orders', name: 'orders')]
     public function orders(): Response
     {
-        return $this->render('profil/index.html.twig', [
+        return $this->render('profile/orders.html.twig', [
             'controller_name' => 'Commandes de l\'utilisateur',
         ]);
     }
