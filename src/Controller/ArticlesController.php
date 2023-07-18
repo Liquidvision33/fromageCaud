@@ -19,6 +19,10 @@ class ArticlesController extends AbstractController
     #[Route('/{slug}', name:'details')]
     public function details(Article $article): Response
     {
-        return $this->render('articles/details.html.twig', compact('article'));
-    }
+        $images = $article->getImages();
+
+        return $this->render('articles/details.html.twig', [
+            'article' => $article,
+            'images' => $images,
+        ]);    }
 }

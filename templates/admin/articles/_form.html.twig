@@ -1,9 +1,25 @@
 {{ form_start(articleForm) }}
     {{ form_row(articleForm.name) }}
     {{ form_row(articleForm.description) }}
+    {{ form_row(articleForm.category) }}
     {{ form_row(articleForm.price) }}
     {{ form_row(articleForm.stock) }}
-    {{ form_row(articleForm.article_picture) }}
-    {{ form_row(articleForm.category) }}
-<button type="submit" class="btn btn-primary">{{ button_label | default('Ajouter') }}</button>
+
+
+{% if app.request.attributes.get('_route') == 'admin_articles_edit' %}
+    <h2>Image</h2>
+    {% for image in article.images %}
+        <div>
+            <img src="{{ asset('assets/uploads/article/mini/300x300-' ~ image.name) }}"
+                 alt="Image" width="150">
+            <a href="{{ path('admin_articles_delete_image', {id: image.id}) }}"
+               data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+        </div>
+    {% endfor %}
+
+{% endif %}
+
+    {{ form_row(articleForm.images) }}
+
+    <button type="submit" class="btn btn-primary">{{ button_label | default('Ajouter') }}</button>
 {{ form_end(articleForm) }}
