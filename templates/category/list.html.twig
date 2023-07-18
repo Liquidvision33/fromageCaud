@@ -1,28 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
-
 {% block body %}
-<main class="container">
-    <section class="row">
-        <div class="col-12">
-            <h1>Nos produits : {{ category.name }}</h1>
-        </div>
-            {% for article in articles %}
-                <div class="col-3 mb-3">
-                    <article class="card h-100">
-                        <img src="{{ asset('assets/uploads/article/mini/300x300-' ~ article.images[0].name) }}"
-                        class="card-img-top" alt="{{ article.name }}">
-                        <div class="card-body">
-                            <h2 class="card-title">{{ article.name }}</h2>
-                            <p class="card-price">Prix : {{ article.price /100 }} €</p>
-                            <p class="card-text">{{ article.description }}</p>
-                            <p class="card-stock">Actuellement en stock : {{ article.stock}}</p>
-                            <a href="{{ path('articles_details', {"slug": article.slug}) }}" class="btn btn-primary">En savoir plus</a>
-                        </div>
-                    </article>
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>Nos produits : {{ category.getName() }}</h1>
+            </div>
+            {% if articles is not empty %}
+                {% for article in articles %}
+                    <div class="col-3 mb-3">
+                        <article class="card h-100">
+                            {% if article.getImages().count() > 0 %}
+                                <img src="{{ asset('assets/uploads/article/mini/300x300-' ~ article.getImages()[0].getName()) }}"
+                                     class="card-img-top" alt="{{ article.getName() }}">
+                            {% else %}
+                                <img src="{{ asset('assets/images/default-image.jpg') }}"
+                                     class="card-img-top" alt="Image par défaut">
+                            {% endif %}
+                            <div class="card-body">
+                                <h2 class="card-title">{{ article.getName() }}</h2>
+                                <p class="card-price">Prix : {{ article.getPrice() / 100 }} €</p>
+                                <p class="card-text">{{ article.getDescription() }}</p>
+                                <p class="card-stock">Actuellement en stock : {{ article.getStock() }}</p>
+                                <a href="{{ path('articles_details', {"slug": article.getSlug()}) }}"
+                                   class="btn btn-primary">En savoir plus</a>
+                            </div>
+                        </article>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <p>Aucun article disponible dans cette catégorie.</p>
                 </div>
-            {% endfor %}
-    </section>
-</main>
+            {% endif %}
+        </section>
+    </main>
 {% endblock %}

@@ -9,6 +9,8 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use http\Message;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -22,26 +24,43 @@ class Article implements TimestampableInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $name = null;
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:'Le nom du produit ne peut pas être vide')]
+    #[Assert\Length(
+        min: 6,
+        max: 200,
+        minMessage: 'Le titre doit faire au moins {{ limit }} caractères',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }} caractères',
+    )]
+    private ?string $name;
 
     #[ORM\Column(nullable: true)]
     private ?float $price = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(message:'La description ne peut pas être vide')]
+    #[Assert\Length(
+        min: 6,
+        max: 200,
+        minMessage: 'La description doit faire au moins {{ limit }} caractères',
+        maxMessage: 'La description ne doit pas faire plus de {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'article')]
     private Collection $users;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[Assert\NotNull(message: "Veuillez sélectionner un article.")]
     private ?Category $category = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\GreaterThanOrEqual(value: 0, message: 'Le stock ne peut pas être négatif')]
     private ?int $stock = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $article_picture = null;
+    #[ORM\Column(length: 255)]
+
+    private ?string $article_picture;
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Images::class,
         cascade: ['persist'], orphanRemoval: true)]

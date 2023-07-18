@@ -5,7 +5,6 @@
     {{ form_row(articleForm.price) }}
     {{ form_row(articleForm.stock) }}
 
-
 {% if app.request.attributes.get('_route') == 'admin_articles_edit' %}
     <h2>Image</h2>
     {% for image in article.images %}
@@ -16,7 +15,6 @@
                data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
         </div>
     {% endfor %}
-
 {% endif %}
 
     {{ form_row(articleForm.images) }}
