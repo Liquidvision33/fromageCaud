@@ -1,54 +1,70 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ path('app_home') }}">
-        <img src={{ asset('assets/images/logo3.jpg') }}
-             width="70" height="70" class="d-inline-block align-top mx-4" alt="">
-    </a>
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+</div>
+<!-- Spinner End -->
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark px-0">
+    <div class="row g-0 d-none d-lg-flex">
+        <div class="col-lg-6 ps-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center text-light">
+                <span>Retrouvez nous:</span>
+                <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-end">
+            <div class="h-100 bg-secondary d-inline-flex align-items-center text-dark py-2 px-4">
+                <span class="me-2 fw-semi-bold"><i class="fa fa-phone-alt me-2"></i>Contactez-nous:</span>
+                <span>+33 05 56 54 58 65</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
+    <a href="{{ path('app_home') }}" class= "navbar-brand d-flex align-items-center">
+        <img src="{{ asset('assets/images/Logo.jpg') }}" width="75" height="75" alt="Logo" class="me-4">
+        <h1 class="m-0">Fromagerie</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_shop') }}">Nos produits</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_history') }}">Qui sommes-nous ?</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_contact') }}">Contactez-nous</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            {% if app.user %}
-                {% if app.user.isVerified %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_profile') }}">Mon compte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Me déconnecter</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mon compte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Me déconnecter</a>
-                    </li>
-                {% endif %}
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Me connecter</a>
-                </li>
-            {% endif %}
-
-        </ul>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{{ path('app_home') }}" class="nav-item nav-link active">Accueil</a>
+            <a href="{{ path('app_shop') }}" class="nav-item nav-link">Nos Produits</a>
+            <a href="{{ path('app_history') }}" class="nav-item nav-link">Notre histoire</a>
+            <a href="{{ path('app_contact') }}" class="nav-item nav-link">Contact</a>
+        </div>
     </div>
+
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="display: flex; align-items: center;">
+        {% if app.user %}
+            <li class="nav-item">
+                <a class="nav-link user-link" href="{{ path('app_profile') }}">Mon compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link user-link" href="{{ path('app_logout') }}">
+                    <img src="{{ asset('assets/images/iconeutilisateur.png') }}" width="30" height="30" alt="icone" class="mx-1">
+                    Se déconnecter
+                </a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link user-link" href="{{ path('app_login') }}">
+                    <img src="{{ asset('assets/images/iconeutilisateur.png') }}" width="30" height="30" alt="icone" class="mx-1">
+                    Se connecter
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
 </nav>
+<!-- Navbar End -->
+
