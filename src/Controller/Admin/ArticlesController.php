@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Images;
 use App\Form\ArticlesFormType;
+use App\Repository\ArticleRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -78,11 +79,6 @@ class ArticlesController extends AbstractController
         if($articleForm->isSubmitted() && $articleForm->isValid()){
             // Vérifie si une image a été téléchargée
             $images = $articleForm->get('images')->getData();
-            if (empty($images)) {
-                $this->addFlash('error', 'Veuillez sélectionner une image.');
-                return $this->redirectToRoute('admin_articles_edit', ['id' => $article->getId()]); // Redirige vers le formulaire d'édition
-            }
-
             foreach($images as $image) {
                 $folder = 'article';
 
@@ -111,10 +107,30 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/delete/{id}', name:'delete')]
-    public function delete(Article $article): Response
+    public function delete(Article $article, ArticleRepository $em, Request $request): Response
     {
-        $this->denyAccessUnlessGranted('ARTICLE_DELETE', $article);
-        return $this->render('admin/articles/index.html.twig');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', $article);
+
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_articles_delete', ['id' => $article->getId()]))
+            ->setMethod('POST')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // L'utilisateur a confirmé la suppression, supprimer l'article
+            $em->remove($article, true);
+
+            $this->addFlash('success', 'Produit supprimé avec succès');
+
+            return $this->redirectToRoute('admin_articles_index');
+        }
+
+        return $this->render('admin/articles/delete.html.twig', [
+            'article' => $article,
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/delete/images/{id}', name:'delete_image', methods: ['DELETE'])]
