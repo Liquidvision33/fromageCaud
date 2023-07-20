@@ -9,7 +9,8 @@
                 <h1>Détails de {{ article.name }} </h1>
             </div>
             <div class="col-6">
-                <img src="{{ asset('assets/images/' ~ article.articlePicture) }}" alt="">
+                {#<img src="{{ asset('assets/images/' ~ article.articlePicture) }}" alt="">#}
+                <img src="{{ asset('assets/uploads/article/mini/300x300-') ~ article.images[0].name }}" alt="">
             </div>
             <div class="col-6">
                 <p>Catégorie : {{ article.category.name }}</p>

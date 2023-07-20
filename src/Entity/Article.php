@@ -43,9 +43,18 @@ class Article implements TimestampableInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $article_picture = null;
 
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Images::class,
+        cascade: ['persist'], orphanRemoval: true)]
+    private Collection $images;
+
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: OrdersDetails::class)]
+    private Collection $ordersDetails;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->ordersDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,6 +157,66 @@ class Article implements TimestampableInterface
     public function setArticlePicture(?string $article_picture): static
     {
         $this->article_picture = $article_picture;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getArticle() === $this) {
+                $image->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrdersDetails>
+     */
+    public function getOrdersDetails(): Collection
+    {
+        return $this->ordersDetails;
+    }
+
+    public function addOrdersDetail(OrdersDetails $ordersDetail): static
+    {
+        if (!$this->ordersDetails->contains($ordersDetail)) {
+            $this->ordersDetails->add($ordersDetail);
+            $ordersDetail->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdersDetail(OrdersDetails $ordersDetail): static
+    {
+        if ($this->ordersDetails->removeElement($ordersDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($ordersDetail->getArticle() === $this) {
+                $ordersDetail->setArticle(null);
+            }
+        }
 
         return $this;
     }
