@@ -58,10 +58,6 @@ class Article implements TimestampableInterface
     #[Assert\GreaterThanOrEqual(value: 0, message: 'Le stock ne peut pas être négatif')]
     private ?int $stock = null;
 
-    #[ORM\Column(length: 255)]
-
-    private ?string $article_picture;
-
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Images::class,
         cascade: ['persist'], orphanRemoval: true)]
     private Collection $images;
