@@ -25,7 +25,7 @@ class ArticlesController extends AbstractController
 
     #[Route('/add', name:'add')]
     public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger,
-    PictureService $pictureService): Response
+                        PictureService $pictureService): Response
     {
         $article = new Article();
 
@@ -34,7 +34,12 @@ class ArticlesController extends AbstractController
         $articleForm->handleRequest($request);
 
         if($articleForm->isSubmitted() && $articleForm->isValid()){
+            // Vérifie si une image a été téléchargée
             $images = $articleForm->get('images')->getData();
+            if (empty($images)) {
+                $this->addFlash('error', 'Veuillez sélectionner une image.');
+                return $this->redirectToRoute('admin_articles_add'); // Redirige vers le formulaire d'ajout
+            }
 
             foreach($images as $image){
                 $folder = 'article';
@@ -48,8 +53,6 @@ class ArticlesController extends AbstractController
 
             $slug = $slugger->slug($article->getName());
             $article->setSlug($slug);
-            $price = $article->getPrice() * 100;
-            $article->setPrice($price);
 
             $em->persist($article);
             $em->flush();
@@ -66,18 +69,19 @@ class ArticlesController extends AbstractController
 
     #[Route('/edit/{id}', name:'edit')]
     public function edit(Article $article, Request $request, EntityManagerInterface $em,
-    SluggerInterface $slugger, PictureService $pictureService): Response
+                         SluggerInterface $slugger, PictureService $pictureService): Response
     {
-        $price = $article->getPrice() / 100;
-        $article->setPrice($price);
-
         $articleForm = $this->createForm(ArticlesFormType::class, $article);
 
         $articleForm->handleRequest($request);
 
         if($articleForm->isSubmitted() && $articleForm->isValid()){
-
+            // Vérifie si une image a été téléchargée
             $images = $articleForm->get('images')->getData();
+            if (empty($images)) {
+                $this->addFlash('error', 'Veuillez sélectionner une image.');
+                return $this->redirectToRoute('admin_articles_edit', ['id' => $article->getId()]); // Redirige vers le formulaire d'édition
+            }
 
             foreach($images as $image) {
                 $folder = 'article';
@@ -91,9 +95,6 @@ class ArticlesController extends AbstractController
 
             $slug = $slugger->slug($article->getName());
             $article->setSlug($slug);
-
-            $price = $article->getPrice() * 100;
-            $article->setPrice($price);
 
             $em->persist($article);
             $em->flush();
@@ -118,7 +119,7 @@ class ArticlesController extends AbstractController
 
     #[Route('/delete/images/{id}', name:'delete_image', methods: ['DELETE'])]
     public function deleteImage(Images $image, Request $request, EntityManagerInterface $em,
-    PictureService $pictureService ): JsonResponse
+                                PictureService $pictureService): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         if($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])){

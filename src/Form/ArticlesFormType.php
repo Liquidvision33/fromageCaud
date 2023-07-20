@@ -4,12 +4,17 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Images;
 use App\Repository\CategoryRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ArticlesFormType extends AbstractType
 {
@@ -19,8 +24,14 @@ class ArticlesFormType extends AbstractType
             ->add('name',options:[
                 'label' => 'Nom'
             ])
-            ->add('price',options:[
-                'label' => 'Prix'
+            ->add('price', MoneyType::class,options:[
+                'label' => 'Prix',
+                'divisor' => 100,
+                'constraints' => [
+                    new Positive(
+                        message: 'Le prix ne peut être négatif',
+                    )
+                ]
             ])
             ->add('description')
             ->add('stock',options:[
@@ -47,6 +58,14 @@ class ArticlesFormType extends AbstractType
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false,
+                'constraints' => [
+                    new All([
+                        new Image([
+                            'maxWidth' => 2200,
+                            'maxWidthMessage' => 'L\'image doit faire {{ max_width }} pixels de large au maximum',
+                        ]),
+                    ]),
+                ],
             ])
         ;
     }
