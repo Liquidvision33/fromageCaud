@@ -37,6 +37,9 @@ class Category implements TimestampableInterface
     #[ORM\Column(nullable: true)]
     private ?int $categoryOrder = null;
 
+    #[ORM\ManyToOne(inversedBy: 'categories')]
+    private ?CategoryPicture $picture = null;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -109,6 +112,18 @@ class Category implements TimestampableInterface
     public function setCategoryOrder(?int $categoryOrder): static
     {
         $this->categoryOrder = $categoryOrder;
+
+        return $this;
+    }
+
+    public function getPicture(): ?CategoryPicture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?CategoryPicture $picture): static
+    {
+        $this->picture = $picture;
 
         return $this;
     }
