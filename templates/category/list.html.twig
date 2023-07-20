@@ -34,8 +34,10 @@
                 </div>
             {% endif %}
         </section>
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_PRODUCT_ADMIN') %}
         <div class="col-3">
             <a href="{{ path('admin_articles_add') }}" class="btn btn-primary">Ajouter un article</a>
         </div>
+        {% endif %}
     </main>
 {% endblock %}
