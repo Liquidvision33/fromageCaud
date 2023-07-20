@@ -11,8 +11,7 @@
             <div>Prénom: {{ user.lastname }}</div>
             <div>Date de naissance: {{  user.dateOfBirth|date('d-m-Y')}}</div>
             <div  class="mb-5">Email : {{ user.email }}</div>
-            <a href="{# {{ path('edit_profil') }} #}" class="btn btn-primary">Modifier le profil</a>
-            <a href="{# {{ path('delete_profil') }} #}" class="btn btn-danger">Supprimer le profil</a>
+            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">Modifier le profil</a>
         </div>
     </div>
 {% endblock %}
