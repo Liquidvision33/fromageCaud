@@ -14,12 +14,14 @@
                         </div>
                     {% endif %}
 
-                    <h1 class="h3 mb-3 font-weight-normal my-3">Connexion</h1>
+                    <h1 class="text-center mb-3 my-5">Connexion à votre compte</h1>
+
                     <label for="inputEmail">Email</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control my-2"
                            autocomplete="email" required autofocus>
-                    <label for="inputPassword">Mot de passe</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control"
+
+                    <label for="inputPassword" class="mt-2">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control my-2"
                            autocomplete="current-password" required>
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -27,11 +29,11 @@
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
-
+                    <div class="text-center my-4">
                     <button class="btn btn-lg btn-primary mt-3" type="submit">
                         Se connecter
                     </button>
-
+                    </div>
                     <div class="text-center">
                         <div class="mb-3 d-flex align-items-center justify-content-center">
                             <a href="{{ path('app_forgot_password_request') }}" class="text-decoration-none">Mot de passe oublié</a>
