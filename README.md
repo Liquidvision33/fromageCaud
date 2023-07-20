@@ -5,20 +5,9 @@
 Hello everyone,
 here is my new project on the theme of developing a website for a cheese dairy.
 
-It's symfony website-skeleton project with some additional library (webpack, fixtures) and tools to validate code standards.
+It's symfony website-skeleton project with some additional library (webpack, fixtures)
 
-* GrumPHP, as pre-commit hook, will run 2 tools when `git commit` is run :
-
-    * PHP_CodeSniffer to check PSR12
-    * PHPStan focuses on finding errors in your code (without actually running it)
-    * PHPmd will check if you follow PHP best practices
-
-  If tests fail, the commit is canceled and a warning message is displayed to developper.
-
-* Github Action as Continuous Integration will be run when a branch with active pull request is updated on github. It will run :
-
-    * Tasks to check if vendor, .idea, env.local are not versionned,
-    * PHP_CodeSniffer, PHPStan and PHPmd with same configuration as GrumPHP.
+* Github Action as Continuous Integration will be run when a branch with active pull request is updated on github. 
 
 ## Getting Started
 
@@ -31,13 +20,12 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
 1. Clone this project
 2. Run `composer install`
-3. Run `yarn install`
-4. Run `yarn encore dev` to build assets
-5. Run `composer require nelmio/security-bundle`
-6. Run `yarn add js-cookie`
-7. Run `yarn encore dev`
-8. Run `composer require symfony/mailer`
-9. Run `composer require vich/uploader-bundle`
+3. Run `yarn encore dev` to build assets
+4. Run `composer require nelmio/security-bundle`
+5. Run `yarn add js-cookie`
+6. Run `yarn encore dev`
+7. Run `composer require symfony/mailer`
+8. Run `composer require vich/uploader-bundle`
 
 
 
@@ -45,13 +33,6 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
 1. Run `symfony server:start` to launch your local php web server
 2. Run `yarn run dev --watch` to launch your local server for assets (or `yarn dev-server` do the same with Hot Module Reload activated)
-
-### Testing
-
-1. Run `php ./vendor/bin/phpcs` to launch PHP code sniffer
-2. Run `php ./vendor/bin/phpstan analyse src --level max` to launch PHPStan
-3. Run `php ./vendor/bin/phpmd src text phpmd.xml` to launch PHP Mess Detector
-4. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
 
 ### Windows Users
 
@@ -70,12 +51,6 @@ The `.editorconfig` file in root directory do this for you. You probably need `E
 ## Built With
 
 * [Symfony](https://github.com/symfony/symfony)
-* [GrumPHP](https://github.com/phpro/grumphp)
-* [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
-* [PHPStan](https://github.com/phpstan/phpstan)
-* [PHPMD](http://phpmd.org)
-* [ESLint](https://eslint.org/)
-* [Sass-Lint](https://github.com/sasstools/sass-lint)
 
 ## Versioning
 
