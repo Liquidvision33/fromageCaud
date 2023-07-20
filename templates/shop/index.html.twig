@@ -61,11 +61,15 @@
                         <div class="col-lg-3 col-md-6 pt-5 wow fadeInUp mb-5" data-wow-delay="0.1s">
                             <div class="service-item d-flex h-100">
                                 <div class="service-img">
-                                    <img class="img-fluid" src="{{ asset('assets/images/Producteur4.jpg') }}" alt="">
+                                    {% if category.picture is not null %}
+                                        <div class="service-img">
+                                            <img class="img-fluid" src="{{ asset('assets/images/' ~ category.picture.getUrl()) }}" alt="">
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div class="service-text p-5 pt-0">
                                     <div class="service-icon">
-                                        <img class="img-fluid rounded-circle" src="{{ asset('assets/images/Producteur4.jpg') }}" alt="">
+                                        <img class="img-fluid rounded-circle" src="{{ asset('assets/images/' ~ category.picture.getUrl()) }}" alt="">
                                     </div>
                                     <h3 class="card-title text-center">{{ category.name }}</h3>
                                     <a href="{{ path('category_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
