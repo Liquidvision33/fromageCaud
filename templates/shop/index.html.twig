@@ -1,30 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Le shop{% endblock %}
+{% block title %}Le magasin{% endblock %}
 
 {% block body %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Nos produits</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <!-- If you want to add links -->
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('app_shop') }}">Nos produits</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Le magasin</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
     <main class="container">
         <section class="row">
             <div class="col-12">
-                <h1>Bienvenue sur le shop</h1>
-                <p>Vous trouverez ici tous les articles en vente dans notre fromagerie</p>
+                <h1 class="text-center my-5">Bienvenue dans notre magasin</h1>
+                <p class="text-center">
+                    Bienvenue dans notre charmante fromagerie, un paradis des saveurs pour les amoureux du fromage !
+                </p>
+                <p class="text-center">
+                    Nous sommes ravis de vous accueillir dans cet univers délicieux où se côtoient des trésors du
+                    terroir, soigneusement sélectionnés pour vous offrir une expérience gustative unique.
+                    Nos étagères regorgent de délices, allant des classiques incontournables aux raretés les plus
+                    exquises. Que vous soyez plutôt fan des pâtes pressées, des fromages affinés ou des créations
+                    audacieuses, vous trouverez ici votre bonheur parmi notre vaste assortiment.
+                </p>
+                <p class="text-center">
+                    Nous mettons un point d'honneur à privilégier les producteurs locaux et les méthodes artisanales,
+                    garantissant ainsi la qualité et l'authenticité de nos produits.
+                    Notre équipe passionnée se tient à votre disposition pour vous conseiller et vous guider dans
+                    votre découverte, afin de trouver le fromage qui fera chavirer vos papilles.
+                    Alors, laissez-vous séduire par les arômes envoûtants qui flottent dans l'air, et partez à la
+                    rencontre de saveurs uniques qui émerveilleront vos sens.
+                </p>
+                <p class="text-center mb-5">
+                    Bonne visite et que cette escapade gourmande soit une source de plaisirs culinaires et
+                    de souvenirs savoureux !
+                </p>
+
             </div>
             {% for category in categories %}
                 {% if category.parent == null %}
-                    <div class="col-12">
-                        <h2>{{ category.name }}</h2>
+                    <div class="col-12 mt-4">
+                        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                            <p class="section-title bg-white text-center text-primary px-3">Découvrez</p>
+                            <h1 class="mb-5">{{ category.name }}</h1>
+                        </div>
+
                     </div>
                 {% else %}
-                    <div class="col-3">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ category.name }}</h3>
-                                <a href="{{ path('category_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
+                        <div class="col-lg-3 col-md-6 pt-5 wow fadeInUp mb-5" data-wow-delay="0.1s">
+                            <div class="service-item d-flex h-100">
+                                <div class="service-img">
+                                    <img class="img-fluid" src="{{ asset('assets/images/Producteur4.jpg') }}" alt="">
+                                </div>
+                                <div class="service-text p-5 pt-0">
+                                    <div class="service-icon">
+                                        <img class="img-fluid rounded-circle" src="{{ asset('assets/images/Producteur4.jpg') }}" alt="">
+                                    </div>
+                                    <h3 class="card-title text-center">{{ category.name }}</h3>
+                                    <a href="{{ path('category_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 {% endif %}
             {% endfor %}
         </section>
     </main>
 {% endblock %}
+

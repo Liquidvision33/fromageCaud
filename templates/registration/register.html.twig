@@ -9,7 +9,7 @@
     <section class="container">
         <div class="row">
             <div class="col">
-                <h2 class="text-center">Créer un compte</h2>
+                <h1 class="text-center my-5">Créer votre compte</h1>
                 {{ form_errors(registrationForm) }}
 
                 {{ form_start(registrationForm) }}
@@ -23,7 +23,7 @@
                     {{ form_row(registrationForm.RGPDConsent, {'attr': {'class': 'form-check-input'}}) }}
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary mt-2 mb-5" type="submit">S'inscrire</button>
+                    <button class="btn btn-lg btn-primary my-4" type="submit">S'inscrire</button>
                 </div>
                 {{ form_end(registrationForm) }}
                 <div class="text-center">

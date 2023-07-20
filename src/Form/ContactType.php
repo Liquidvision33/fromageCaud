@@ -19,20 +19,20 @@ class ContactType extends AbstractType
         $builder
             ->add('Prenom', TextType::class, [
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank(['message' => 'Le prénom est requis.'])
                 ],
                 'attr' => [
                     'placeholder' => 'Prenom',
-                    'class' => 'fc-contact-fields'
+                    'class' => 'form-control col-6 mb-3'
                 ],
             ])
             ->add('Nom', TextType::class, [
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank(['message' => 'Le nom est requis.'])
                 ],
                 'attr' => [
                     'placeholder' => 'Nom',
-                    'class' => 'fc-contact-fields'
+                    'class' => 'form-control col-6 mb-3'
                 ],
             ])
             ->add('Email', EmailType::class, [
@@ -48,25 +48,27 @@ class ContactType extends AbstractType
             ])
             ->add('Sujet', TextType::class, [
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank(['message' => 'Veuillez indiquer votre sujet'])
                 ],
                 'attr' => [
+
                     'placeholder' => 'Sujet',
-                    'class' => 'fc-contact-fields'
+                    'class' => 'form-control col-6 mb-3'
                 ],
             ])
             ->add('Contenu', TextareaType::class, [
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank(['message' => 'Veuillez rédiger un message'])
                 ],
                 'attr' => [
                     'placeholder' => 'Votre message',
-                    'class' => 'fc-contact-contenu-fields'
+                    'class' => 'form-control col-6 mb-3'
                 ],
             ])
             ->add('Envoyer', SubmitType::class, [
                 'attr' => [
-                    'class' => 'fc-contact-btn ws-yellow-btn ws-yellow-btn:hover'
+                    'class' => 'btn btn-primary mt-2 mb-5',
+                    'type' => 'submit',
                 ]
             ]);
     }

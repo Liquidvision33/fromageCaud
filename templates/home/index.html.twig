@@ -4,11 +4,9 @@
 
 {% block body %}
 
-
-
     <!-- Carousel Start -->
     <div class="container-fluid px-0 mb-5">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="header-carousel" class="fc carousel slide custom" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="w-100" src="{{ asset('assets/images/fromagerie1.jpg') }}" alt="Image">
@@ -236,7 +234,6 @@
                                    href="{{ path('app_shop') }}">
                                     <i class="bi bi-eye-fill"></i>
                                 </a>
-                                <!--<p><strong>Voir les produits</strong></p> -->
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -370,4 +367,8 @@
         </div>
     </div>
     <!-- Testimonial End -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
 {% endblock %}
+
+

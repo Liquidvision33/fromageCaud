@@ -23,8 +23,8 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
 
         $parent = $this->createCategory('Traiteur', null, $manager);
 
-        $this->createCategory('Plateau de charcuteries', $parent, $manager);
-        $this->createCategory('Plateau de fromages', $parent, $manager);
+        $this->createCategory('Plateaux de charcuteries', $parent, $manager);
+        $this->createCategory('Plateaux de fromages', $parent, $manager);
         $this->createCategory('Les cuisinés', $parent, $manager);
 
         $parent = $this->createCategory('Cave', null, $manager);
@@ -32,13 +32,13 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
         $this->createCategory('Vin blanc', $parent, $manager);
         $this->createCategory('Vin rouge', $parent, $manager);
         $this->createCategory('Vin rosé', $parent, $manager);
-        $this->createCategory('Coffret', $parent, $manager);
+        $this->createCategory('Coffrets', $parent, $manager);
 
         $parent = $this->createCategory('Epicerie', null, $manager);
 
         $this->createCategory('Le sucré', $parent, $manager);
         $this->createCategory('Le salé', $parent, $manager);
-        $this->createCategory('Condiment', $parent, $manager);
+        $this->createCategory('Condiments', $parent, $manager);
 
         $manager->flush();
     }
