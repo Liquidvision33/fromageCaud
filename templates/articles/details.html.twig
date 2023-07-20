@@ -3,10 +3,33 @@
 {% block title %}Détails de {{ article.name }}{% endblock %}
 
 {% block body %}
-    <h1>Détails de {{ article.name }} </h1>
-    <div class="container">
-        <div>METTRE ICI PHOTO</div>
-        <div>Prix: {{ article.price }} €</div>
-        <div>Description : {{ article.description }}</div>
-    </div>
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>Détails de {{ article.name }} </h1>
+            </div>
+            <div class="col-6">
+                {#<img src="{{ asset('assets/images/' ~ article.articlePicture) }}" alt="">#}
+                <img src="{{ asset('assets/uploads/article/mini/300x300-') ~ article.images[0].name }}" alt="">
+            </div>
+            <div class="col-6">
+                <p>Catégorie : {{ article.category.name }}</p>
+                <p>Description : {{ article.description }}</p>
+                <p>Prix: {{ article.price / 100}} €</p>
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_PRODUCT_ADMIN') %}
+                    <a href="{{ path('admin_articles_edit', {'id': article.id}) }}" class="btn btn-primary">Éditer</a>
+                    <a href="{{ path('admin_articles_delete', {'id': article.id}) }}" class="btn btn-danger">Supprimer</a>
+                    <a href="{{ path('admin_articles_add') }}" class="btn btn-primary">Ajouter un nouvel article</a>
+                {% endif %}
+
+
+                {# Here is the e-commerce process with the button for order
+                {% if article.stock > 0 %}
+                <a href="#" class="btn btn-success">Ajouter au panier</a>
+                {% else %}
+                <p class="text-danger">Temporairement en rupture de stock</p>
+                {% endif %} #}
+            </div>
+        </section>
+    </main>
 {% endblock %}
