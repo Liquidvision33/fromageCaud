@@ -2,14 +2,16 @@
 
 {% block title %}Profil{% endblock %}
 
-    {% block body %}
-        <h1>Bienvenue {{ user.lastname }} </h1>
-        <div class="container">
-            <div>METTRE ICI PHOTO</div>
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+        <div class="text-center">
+            <h1 class="my-5">Bienvenue {{ user.lastname }} </h1>
+            <img src="{{ asset('assets/images/iconeutilisateur.png') }}" class="mb-3" alt="Photo de profil">
             <div>Nom: {{ user.firstname }}</div>
             <div>Prénom: {{ user.lastname }}</div>
             <div>Date de naissance: {{  user.dateOfBirth|date('d-m-Y')}}</div>
-            <div>Email : {{ user.email }}</div>
+            <div  class="mb-5">Email : {{ user.email }}</div>
+            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">Modifier le profil</a>
         </div>
-    {% endblock %}
-
+    </div>
+{% endblock %}

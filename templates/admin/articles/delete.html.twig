@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer l'article {{ article.name }}{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <h1>Supprimer l'article "{{ article.name }}"</h1>
+        <p><strong>Êtes-vous sûr de vouloir supprimer cet article ?</strong></p>
+        <form method="post" action="{{ path('admin_articles_delete', {'id': article.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+            <a href="{{ path('admin_articles_index') }}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </main>
+{% endblock %}
