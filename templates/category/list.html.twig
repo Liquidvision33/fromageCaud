@@ -28,8 +28,9 @@
                     <div class="col-3 mb-3">
                         <article class="card h-100">
                             {% if article.getImages().count() > 0 %}
-                                <img src="{{ asset('assets/uploads/article/mini/300x300-' ~ article.getImages()[0].getName()) }}"
-                                     class="card-img-top" alt="{{ article.getName() }}">
+                                <img src=
+                                "{{ asset('assets/uploads/article/mini/300x300-' ~ article.getImages()[0].getName()) }}"
+                                 class="card-img-top" alt="{{ article.getName() }}">
                             {% else %}
                                 <img src="{{ asset('assets/images/default-image.jpg') }}"
                                      class="card-img-top" alt="Image par défaut">

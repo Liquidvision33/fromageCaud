@@ -12,10 +12,14 @@
                     <h1 class="text-center h3 mb-3 font-weight-normal">Mot de passe oublié</h1>
                     {{ form_start(requestForm) }}
                     <div class="form-group">
-                        {{ form_row(requestForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse e-mail'}}) }}
+                    {{ form_row(requestForm.email,
+                    {'attr': {'class': 'form-control', 'placeholder': 'Adresse e-mail'}}) }}
                     </div>
                     <div class="text-center mt-4">
-                        <p>Veuillez saisir votre adresse e-mail. Nous vous enverrons le lien destiné à la modification de votre mot de passe.</p>
+                        <p>
+                            Veuillez saisir votre adresse e-mail. Nous vous enverrons le lien destiné à la modification
+                            de votre mot de passe.
+                        </p>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary mt-5 mb-3">Réinitialiser mon mot de passe</button>
