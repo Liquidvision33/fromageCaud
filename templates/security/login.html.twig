@@ -17,7 +17,9 @@
                     <h1 class="text-center mb-3 my-5">Connexion à votre compte</h1>
 
                     <label for="inputEmail">Email</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control my-2"
+                    <input type="email" value="{{ last_username }}"
+                           name="email" id="inputEmail"
+                           class="form-control my-2"
                            autocomplete="email" required autofocus>
 
                     <label for="inputPassword" class="mt-2">Mot de passe</label>
@@ -27,7 +29,9 @@
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                     {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        <div class="alert alert-danger">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
                     {% endif %}
                     <div class="text-center my-4">
                     <button class="btn btn-lg btn-primary mt-3" type="submit">
