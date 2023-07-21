@@ -38,37 +38,29 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{{ path('app_home') }}" class="nav-item nav-link active">Accueil</a>
+            <a href="{{ path('app_home') }}" class="nav-item nav-link">Accueil</a>
             <a href="{{ path('app_shop') }}" class="nav-item nav-link">Nos Produits</a>
             <a href="{{ path('app_history') }}" class="nav-item nav-link">Notre histoire</a>
             <a href="{{ path('app_contact') }}" class="nav-item nav-link">Contact</a>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="display: flex; align-items: center;">
+
+            <a class="navbar-nav" style="display: flex; align-items: center;">
                 {% if app.user %}
-                    <li class="nav-item-btn-custom">
-                        <a class="nav-link user-link" href="{{ path('app_profile') }}">Mon compte</a>
-                    </li>
-                    <li class="nav-item-btn-custom">
-                        <a class="nav-link user-link" href="{{ path('app_logout') }}">
-                            <img src="{{ asset('assets/images/iconeutilisateur.png') }}"
-                                 width="30" height="30" alt="icone" class="mx-1">
-                            Se déconnecter
-                        </a>
-                    </li>
+                    <a class="nav-item nav-link" href="{{ path('app_profile') }}"><strong>Mon compte</strong></a>
+                    <a><img src="{{ asset('assets/images/iconeutilisateur.png') }}"
+                            width="35" height="35" alt="icone" class=" mx-2" style="margin-top: 19px">
+                    </a>
+                    <a class="nav-item nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                 {% else %}
-                    <li class="nav-item-btn-custom">
-                        <a class="nav-link user-link" href="{{ path('app_login') }}">
-                            <img src="{{ asset('assets/images/iconeutilisateur.png') }}"
-                                 width="30" height="30" alt="icone" class="mx-1">
-                            Se connecter
-                        </a>
-                    </li>
+                    <a><img src="{{ asset('assets/images/iconeutilisateur.png') }}"
+                            width="35" height="35" alt="icone" class=" mx-2" style="margin-top: 19px">
+                    </a>
+                    <a class="nav-item nav-link" style="margin-right: 10px" href="{{ path('app_login') }}">Se connecter</a>
+                    <a class="nav-item nav-link fc-custom-separator" style="margin-right: 10px"><strong>/</strong></a>
+                    <a class="nav-item nav-link" style="margin-right: 0" href="{{ path('app_register') }}" >S'inscrire</a>
                 {% endif %}
-            </ul>
+            </a>
         </div>
     </div>
-
-
-
 </nav>
 <!-- Navbar End -->
 

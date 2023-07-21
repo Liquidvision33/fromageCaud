@@ -9,6 +9,10 @@
     --dark: #404A3D;
 }
 
+.text-align-custom{
+    text-align: justify;
+}
+
 .custom-alert {
     margin-bottom: 0;
 }
@@ -100,7 +104,7 @@
 }
 
 .navbar .navbar-nav .nav-link {
-    margin-right: 35px;
+    margin-right: 23px;
     padding: 25px 0;
     color: var(--dark);
     font-size: 18px;
@@ -122,6 +126,7 @@
     margin-left: 8px;
 }
 
+
 @media (max-width: 991.98px) {
     .navbar .navbar-nav .nav-link  {
         margin-right: 0;
@@ -130,6 +135,9 @@
 
     .navbar .navbar-nav {
         border-top: 1px solid #EEEEEE;
+    }
+    .fc-custom-separator{
+        display: none;
     }
 }
 

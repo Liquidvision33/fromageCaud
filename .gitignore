@@ -1,8 +1,10 @@
 .idea/
 .vscode/
 .DS_Store
-/images/
+/public/assets/images/
+/public/assets/uploads/article/mini
 /mini/
+
 
 ###> symfony/framework-bundle ###
 /.env.local

@@ -18,7 +18,8 @@
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">
                                         Découvrez nos produits
                                     </h1>
-                                    <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">
+                                    <a href="{{ path('app_shop') }}"
+                                       class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">
                                         En savoir plus
                                     </a>
                                 </div>
@@ -36,7 +37,8 @@
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">
                                         Découvrez notre histoire
                                     </h1>
-                                    <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">
+                                    <a href="{{ path('app_history') }}"
+                                       class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">
                                         En savoir plus
                                     </a>
                                 </div>
@@ -54,7 +56,8 @@
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">
                                         Goutez et appréciez le terroir
                                     </h1>
-                                    <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">
+                                    <a href="{{ path('app_shop') }}"
+                                       class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">
                                         En savoir plus
                                     </a>
                                 </div>
@@ -120,7 +123,7 @@
                             <span>Tous nos produits sont direct producteurs et certifiés</span>
                         </div>
                     </div>
-                    <a class="btn btn-secondary rounded-pill py-3 px-5" href="">En savoir plus</a>
+                    <a class="btn btn-secondary rounded-pill py-3 px-5" href="{{ path('app_history') }}">En savoir plus</a>
                 </div>
             </div>
         </div>
@@ -141,7 +144,9 @@
                     <p><i class="fa fa-check text-primary me-3"></i>Produits sains</p>
                     <p><i class="fa fa-check text-primary me-3"></i>Produits frais</p>
                     <p><i class="fa fa-check text-primary me-3"></i>Fait maison</p>
-                    <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="">En savoir plus</a>
+                    <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="{{ path('app_shop') }}">
+                        En savoir plus
+                    </a>
                 </div>
                 <div class="col-lg-6">
                     <div class="rounded overflow-hidden">
@@ -200,7 +205,9 @@
                             <h2 class="text-white mb-3">Découvrez les animaux de la ferme</h2>
                             <p class="text-white mb-4">Tous les produits sont tracés et proviennent d'établissements
                                 français selon les régions</p>
-                            <a class="btn btn-secondary rounded-pill py-2 px-4" href="">En savoir plus</a>
+                            <a class="btn btn-secondary rounded-pill py-2 px-4" href="{{ path('app_history') }}">
+                                En savoir plus
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -213,7 +220,9 @@
                             <h2 class="text-white mb-3">Découvrez nos producteurs engagés</h2>
                             <p class="text-white mb-4">Tous les producteurs sont des personnes engagés et
                                 passionnés de leur métier</p>
-                            <a class="btn btn-secondary rounded-pill py-2 px-4" href="">En savoir plus</a>
+                            <a class="btn btn-secondary rounded-pill py-2 px-4" href="{{ path('app_history') }}">
+                                En savoir plus
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -242,8 +251,8 @@
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Plateau de fromages</a>
-                            <span class="text-primary me-1">Idéale à partager en famille ou entre amis</span>
+                            <a class="d-block text-primary h5" href="">Plateau de fromages</a>
+                            <span class="me-1">Idéale à partager en famille ou entre amis</span>
                         </div>
                     </div>
                 </div>
@@ -259,8 +268,8 @@
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Pièce montée</a>
-                            <span class="text-primary me-1">Parfait pour une évènement à fêter</span>
+                            <a class="d-block text-primary h5" href="">Pièce montée</a>
+                            <span class="me-1">Parfait pour une évènement à fêter</span>
                         </div>
                     </div>
                 </div>
@@ -276,8 +285,8 @@
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Bleu des Causses</a>
-                            <span class="text-primary me-1">Un fromage qui allie caractère et finesse</span>
+                            <a class="d-block text-primary h5" href="">Bleu des Causses</a>
+                            <span class="me-1">Un fromage qui allie caractère et finesse</span>
                         </div>
                     </div>
                 </div>
@@ -293,8 +302,8 @@
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Yaourt maison</a>
-                            <span class="text-primary me-1">
+                            <a class="d-block text-primary h5" href="">Yaourt maison</a>
+                            <span class="me-1">
                                 Différent goûts disponible et produit chez Robert en Sarthe
                             </span>
                         </div>

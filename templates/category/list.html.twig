@@ -20,8 +20,10 @@
     <main class="container">
         <section class="row">
             <div class="col-12">
-                <h1 class="text-center mt-4">Bienvenue dans le rayon</h1>
-                <h1 class="text-center mb-5">{{ category.getName() }}</h1>
+                <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <p class="section-title bg-white text-center text-primary px-3">RAYON</p>
+                    <h1 class="mb-5">{{ category.getName() }}</h1>
+                </div>
             </div>
             {% if articles is not empty %}
                 {% for article in articles %}
@@ -32,11 +34,11 @@
                                 "{{ asset('assets/uploads/article/mini/300x300-' ~ article.getImages()[0].getName()) }}"
                                  class="card-img-top" alt="{{ article.getName() }}">
                             {% else %}
-                                <img src="{{ asset('assets/images/default-image.jpg') }}"
+                                <img src="{{ asset('assets/images/default-image.png') }}"
                                      class="card-img-top" alt="Image par défaut">
                             {% endif %}
                             <div class="card-body text-center">
-                                <h2 class="card-title ">{{ article.getName() }}</h2>
+                                <h2 class="card-title text-primary">{{ article.getName() }}</h2>
                                 <p class="card-text">{{ article.getDescription() }}</p>
                                 <p class="card-price"> <strong>Prix :</strong>  {{ article.getPrice() / 100 }} €</p>
                                 <p class="card-stock">Actuellement en stock : {{ article.getStock() }}</p>
